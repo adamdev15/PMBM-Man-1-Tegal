@@ -12,10 +12,12 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:400,600,700|playfair-display:600,800&display=swap"
         rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="antialiased font-sans text-gray-800 bg-gray-50">
+<body class="antialiased font-sans text-gray-800 bg-gray-50" x-data="landingPage()" x-init="init()">
 
     <!-- Navbar -->
     <nav x-data="{ open: false }"
@@ -35,9 +37,9 @@
                     <a href="#program" class="text-gray-600 hover:text-green-600 font-medium transition">Jadwal</a>
                     <a href="#procedure" class="text-gray-600 hover:text-green-600 font-medium transition">Alur Pendaftaran</a>
                     <a href="#contact" class="text-gray-600 hover:text-green-600 font-medium transition">Kontak</a>
-                    <a href="{{ route('pendaftaran') }}"
+                    <button @click="handleDaftarClick()"
                         class="px-6 py-2.5 bg-green-600 text-white rounded-full font-semibold hover:bg-green-700 transition shadow-lg hover:shadow-green-500/30 transform hover:-translate-y-0.5">Daftar
-                        Sekarang</a>
+                        Sekarang</button>
                     <a href="{{ route('casis.login') }}"
                         class="text-green-600 font-medium hover:text-green-800 transition">Masuk</a>
                 </div>
@@ -67,9 +69,9 @@
                 <a href="#program"
                     class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-600 hover:bg-green-50">Program
                     Unggulan</a>
-                <a href="{{ route('pendaftaran') }}"
-                    class="block px-3 py-2 mt-4 text-center rounded-md text-base font-medium bg-green-600 text-white hover:bg-green-700">Daftar
-                    Sekarang</a>
+                    <button @click="handleDaftarClick()"
+                        class="block w-full px-3 py-2 mt-4 text-center rounded-md text-base font-medium bg-green-600 text-white hover:bg-green-700">Daftar
+                        Sekarang</button>
             </div>
         </div>
     </nav>
@@ -106,10 +108,10 @@
                     </p>
                     <div
                         class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0 flex flex-col sm:flex-row gap-4">
-                        <a href="{{ route('pendaftaran') }}"
-                            class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-green-600 hover:bg-green-700 md:text-lg md:px-10 shadow-xl shadow-green-500/20 transition transform hover:-translate-y-1">
-                            Daftar Sekarang - Gratis
-                        </a>
+                    <button @click="handleDaftarClick()"
+                        class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-green-600 hover:bg-green-700 md:text-lg md:px-10 shadow-xl shadow-green-500/20 transition transform hover:-translate-y-1">
+                            Daftar Sekarang
+                        </button>
                         <a href="#procedure"
                             class="inline-flex items-center justify-center px-8 py-3 border border-gray-300 text-base font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50 md:text-lg md:px-10 shadow-sm transition">
                             Lihat Prosedur
@@ -344,7 +346,7 @@
     <footer class="bg-gray-900 text-white">
         <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-                <h3 class="text-xl font-bold font-playfair mb-4">PSBM Madrasah</h3>
+                <h3 class="text-xl font-bold font-playfair mb-4">PMBM Madrasah</h3>
                 <p class="text-gray-400 text-sm">Mewujudkan pendidikan berkualitas berlandaskan nilai-nilai keislaman
                     untuk masa depan yang gemilang.</p>
             </div>
@@ -366,11 +368,197 @@
             </div>
         </div>
         <div class="bg-gray-800 py-4">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-300 text-sm">
                 &copy; {{ date('Y') }} PMBM MAN 1 Tegal. All rights reserved.
             </div>
         </div>
     </footer>
+
+    <!-- Modal Informasi Pendaftaran -->
+    <div x-show="showModal" x-cloak 
+        class="fixed inset-0 z-50 overflow-y-auto" 
+        x-transition:enter="ease-out duration-300"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="ease-in duration-200"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-1"
+        @click.away="showModal = false"
+        style="display: none;">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <!-- Background overlay -->
+            <div class="fixed inset-0 bg-gray-900 bg-opacity-50" style="opacity:0.4" 
+                @click="showModal = false"></div>
+
+            <!-- Modal panel -->
+            <div class="inline-block align-bottom bg-white rounded-2xl px-6 pt-5 pb-6 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6"
+                @click.stop
+                x-transition:enter="ease-out duration-300"
+                x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                x-transition:leave="ease-in duration-200"
+                x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+                x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
+                
+                <!-- Header -->
+                <div class="flex items-center justify-between mb-5 p-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center">
+                            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 font-playfair">Informasi Pendaftaran</h3>
+                    </div>
+                    <button @click="showModal = false" class="text-gray-400 hover:text-gray-600 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Content -->
+                <div x-show="registrationStatus === 'not_started'">
+                    <div class="bg-green-50 rounded-xl p-5 mb-5 border border-green-200 m-6">
+                        <p class="text-gray-700 text-base font-semibold mb-3">Pendaftaran belum dibuka</p>
+                        <p class="text-gray-600 text-sm mb-4">Tanggal Pendaftaran dibuka dalam:</p>
+                        
+                        <!-- Countdown Timer -->
+                        <div class="flex justify-center items-center gap-2 mb-5">
+                            <div class="bg-yellow-400 rounded-lg p-3 text-center shadow-sm border border-yellow-200">
+                                <div class="text-2xl font-bold text-white mb-1" x-text="String(countdown.days || 0).padStart(2, '0')"></div>
+                                <div class="text-xs font-semibold text-white uppercase">Hari</div>
+                            </div>
+                            <div class="bg-yellow-400 rounded-lg p-3 text-center shadow-sm border border-yellow-200">
+                                <div class="text-2xl font-bold text-white mb-1" x-text="String(countdown.hours || 0).padStart(2, '0')"></div>
+                                <div class="text-xs font-semibold text-white uppercase">Jam</div>
+                            </div>
+                            <div class="bg-yellow-400 rounded-lg p-3 text-center shadow-sm border border-yellow-200">
+                                <div class="text-2xl font-bold text-white mb-1" x-text="String(countdown.minutes || 0).padStart(2, '0')"></div>
+                                <div class="text-xs font-semibold text-white uppercase">Menit</div>
+                            </div>
+                            <div class="bg-yellow-400 rounded-lg p-3 text-center shadow-sm border border-yellow-200">
+                                <div class="text-2xl font-bold text-white mb-1" x-text="String(countdown.seconds || 0).padStart(2, '0')"></div>
+                                <div class="text-xs font-semibold text-white uppercase">Detik</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div x-show="registrationStatus === 'closed'">
+                    <div class="bg-green-50 rounded-xl p-5 mb-5 border border-green-200">
+                        <div class="flex items-center gap-3 mb-3">
+                            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <p class="text-green-700 text-base font-semibold">Pendaftaran Telah Ditutup</p>
+                        </div>
+                        <p class="text-gray-600 text-sm">Maaf, periode pendaftaran telah berakhir. Silakan hubungi panitia untuk informasi lebih lanjut.</p>
+                    </div>
+                </div>
+
+                <!-- Jadwal Info -->
+                <div class=" rounded-xl p-4 m-6 mt-5">
+                    <h4 class="font-bold text-gray-900 mb-3 text-sm">Jadwal PMBM</h4>
+                    <div class="space-y-2 text-xs text-gray-600">
+                    @php \Carbon\Carbon::setLocale('id'); @endphp
+                        <div class="flex justify-between">
+                                <span>Pembukaan:</span>
+                                <span class="font-semibold text-gray-900">{{ $tanggalMulai ? $tanggalMulai->translatedFormat('l, d F Y') : '-' }} s.d. {{ $tanggalSelesai ? $tanggalSelesai->translatedFormat('l, d F Y') : '-' }}</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Pengumuman:</span>
+                            <span class="font-semibold text-gray-900">{{ $settings['jadwal_pengumuman'] ? \Carbon\Carbon::parse($settings['jadwal_pengumuman'])->translatedFormat('l, d F Y') : '-' }}</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Daftar Ulang:</span>
+                            <span class="font-semibold text-gray-900">{{ $settings['jadwal_daftar_ulang'] ? \Carbon\Carbon::parse($settings['jadwal_daftar_ulang'])->translatedFormat('l, d F Y') : '-' }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function landingPage() {
+            return {
+                showModal: false,
+                registrationStatus: @json($registrationStatus ?? 'open'),
+                tanggalMulai: @json($tanggalMulai ? $tanggalMulai->toIso8601String() : null),
+                countdown: {
+                    days: 0,
+                    hours: 0,
+                    minutes: 0,
+                    seconds: 0
+                },
+                countdownInterval: null,
+
+                init() {
+                    if (this.registrationStatus === 'not_started' && this.tanggalMulai) {
+                        this.startCountdown();
+                    }
+                },
+
+                startCountdown() {
+                    if (!this.tanggalMulai) return;
+                    const targetDate = new Date(this.tanggalMulai).getTime();
+                    this.updateCountdown(targetDate);
+                    this.countdownInterval = setInterval(() => {
+                        this.updateCountdown(targetDate);
+                    }, 1000);
+                },
+
+                updateCountdown(targetDate) {
+                    const now = new Date().getTime();
+                    const distance = targetDate - now;
+                    if (distance < 0) {
+                        this.countdown = { days: 0, hours: 0, minutes: 0, seconds: 0 };
+                        if (this.countdownInterval) {
+                            clearInterval(this.countdownInterval);
+                        }
+                        return;
+                    }
+                    this.countdown = {
+                        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+                        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+                        seconds: Math.floor((distance % (1000 * 60)) / 1000)
+                    };
+                },
+
+                handleDaftarClick() {
+                    if (this.registrationStatus === 'not_started') {
+                        this.showModal = true;
+                        this.showHeroAlertToast('warning', 'Pendaftaran belum dibuka');
+                    } else if (this.registrationStatus === 'closed') {
+                        this.showModal = true;
+                        this.showHeroAlertToast('error', 'Pendaftaran telah ditutup');
+                    } else {
+                        window.location.href = '{{ route("pendaftaran") }}';
+                    }
+                },
+
+                showHeroAlertToast(type, message) {
+                    let icon = '';
+                    let title = '';
+                    if (type === 'warning') {
+                        icon = 'warning';
+                        title = 'Pendaftaran Belum Dibuka';
+                    } else if (type === 'error') {
+                        icon = 'error';
+                        title = 'Pendaftaran Ditutup';
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
 
 </body>
 

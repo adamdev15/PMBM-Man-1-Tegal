@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Penerimaan Murid Baru Madrasah - PMBM</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
+    <link rel="icon" href="{{ asset('images/logo_kemenag.png') }}" type="image/png">
     <link
         href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700|playfair-display:400,600,700,800&display=swap"
         rel="stylesheet" />
@@ -164,13 +165,13 @@
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
                             <div class="block">
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Nama Lengkap</label>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Nama Lengkap <span class="text-red-500">*</span></label>
                                 <input type="text" x-model="formData.nama_lengkap"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition"
                                     placeholder="Sesuai Akta Kelahiran">
                             </div>
                             <div class="block">
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">NISN</label>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">NISN <span class="text-red-500">*</span></label>
                                 <input type="text" x-model="formData.nisn"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition"
                                     placeholder="10 Digit Angka">
@@ -181,23 +182,23 @@
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                             </div>
                             <div class="block">
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Nomor KK</label>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Nomor KK <span class="text-red-500">*</span></label>
                                 <input type="text" x-model="formData.no_kk"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                             </div>
 
                             <div class="block">
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Tempat Lahir</label>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Tempat Lahir <span class="text-red-500">*</span></label>
                                 <input type="text" x-model="formData.tempat_lahir"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                             </div>
                             <div class="block">
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Tanggal Lahir</label>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Tanggal Lahir <span class="text-red-500">*</span></label>
                                 <input type="date" x-model="formData.tgl_lahir"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                             </div>
                             <div class="block">
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Jenis Kelamin</label>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Jenis Kelamin <span class="text-red-500">*</span></label>
                                 <select x-model="formData.jk"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                                     <option value="">Pilih Jenis Kelamin...</option>
@@ -207,25 +208,25 @@
                             </div>
                             <div class="block">
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">Nomor WhatsApp
-                                    Aktif</label>
+                                    Aktif <span class="text-red-500">*</span></label>
                                 <input type="text" x-model="formData.no_hp_siswa"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition"
                                     placeholder="Contoh: 08123456789">
                             </div>
 
                             <div class="block">
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Anak Ke-</label>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Anak Ke- <span class="text-red-500">*</span></label>
                                 <input type="number" x-model="formData.anak_ke"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                             </div>
                             <div class="block">
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Jml Saudara</label>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Jml Saudara <span class="text-red-500">*</span></label>
                                 <input type="number" x-model="formData.jml_saudara"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                             </div>
                             <div class="block">
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">Pilih Program /
-                                    Ketrampilan</label>
+                                    Ketrampilan <span class="text-red-500">*</span></label>
                                 <select x-model="formData.ketrampilan_id"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition"
                                     :disabled="!formData.jk">
@@ -283,7 +284,7 @@
                             </div>
 
                             <div class="block">
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Pilihan Orientasi</label>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Pilihan Orientasi <span class="text-red-500">*</span></label>
                                 <select x-model="formData.orientasi_ortu_id"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                                     <option value="">Pilih...</option>
@@ -297,7 +298,7 @@
 
                             <div class="md:col-span-2 block">
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">Alamat Lengkap
-                                    (Domisili)</label>
+                                    (Domisili) <span class="text-red-500">*</span></label>
                                 <textarea x-model="formData.alamat_siswa" rows="3"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition"
                                     placeholder="Jalan, RT/RW, Desa/Kelurahan, Kecamatan, Kabupaten"></textarea>
@@ -331,7 +332,7 @@
                         <!-- Ayah Form -->
                         <div x-show="ortuTab === 'ayah'" class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
                             <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">Nama
-                                    Ayah</label><input type="text" x-model="formData.nama_ayah"
+                                    Ayah <span class="text-red-500">*</span></label><input type="text" x-model="formData.nama_ayah"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                             </div>
                             <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">NIK
@@ -339,7 +340,7 @@
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                             </div>
                             <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">Status
-                                    Ayah</label>
+                                    Ayah <span class="text-red-500">*</span></label>
                                 <select x-model="formData.status_ayah"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                                     <option value="Hidup">Hidup</option>
@@ -347,7 +348,7 @@
                                 </select>
                             </div>
                             <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">Tgl
-                                    Lahir</label><input type="date" x-model="formData.tgl_lahir_ayah"
+                                    Lahir <span class="text-red-500">*</span></label><input type="date" x-model="formData.tgl_lahir_ayah"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                             </div>
                             <div class="block"><label
@@ -358,18 +359,17 @@
                                         value="{{ $p->id }}">{{ $p->nama }}</option>@endforeach
                                 </select></div>
                             <div class="block"><label
-                                    class="block text-sm font-semibold text-gray-700 mb-2">Penghasilan</label><select
+                                        class="block text-sm font-semibold text-gray-700 mb-2">Penghasilan</label><select
                                     x-model="formData.penghasilan_ayah_id"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                                     <option value="">Pilih...</option>@foreach($penghasilan as $p)<option
                                         value="{{ $p->id }}">{{ $p->nama }}</option>@endforeach
                                 </select></div>
-                            <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">No
-                                    HP</label><input type="text" x-model="formData.no_hp_ayah"
+                            <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">No HP<span class="text-red-500">*</span></label>
+                                    <input type="text" x-model="formData.no_hp_ayah"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                             </div>
-                            <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">Pendidikan
-                                    Terakhir</label>
+                            <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">Pendidikan Terakhir</label>
                                 <select x-model="formData.pendidikan_ayah_id"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                                     <option value="">Pilih...</option>
@@ -378,7 +378,7 @@
                                 </select>
                             </div>
                             <div class="md:col-span-2 block"><label
-                                    class="block text-sm font-semibold text-gray-700 mb-2">Alamat Ayah</label>
+                                    class="block text-sm font-semibold text-gray-700 mb-2">Alamat Ayah <span class="text-red-500">*</span></label>
                                 <textarea x-model="formData.alamat_ayah" rows="2"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition"></textarea>
                             </div>
@@ -386,15 +386,15 @@
 
                         <!-- Ibu Form -->
                         <div x-show="ortuTab === 'ibu'" class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-                            <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">Nama
-                                    Ibu</label><input type="text" x-model="formData.nama_ibu"
+                            <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">Nama Ibu <span class="text-red-500">*</span></label>
+                                    <input type="text" x-model="formData.nama_ibu"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                             </div>
-                            <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">NIK
-                                    Ibu</label><input type="text" x-model="formData.nik_ibu"
+                            <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">NIK Ibu</label>
+                                    <input type="text" x-model="formData.nik_ibu"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                             </div>
-                            <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">Status
+                            <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">Status <span class="text-red-500">*</span></label>
                                     Ibu</label>
                                 <select x-model="formData.status_ibu"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
@@ -402,23 +402,22 @@
                                     <option value="Meninggal">Meninggal</option>
                                 </select>
                             </div>
-                            <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">Tgl
-                                    Lahir</label><input type="date" x-model="formData.tgl_lahir_ibu"
+                            <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">Tgl Lahir Ibu <span class="text-red-500">*</span></label>
+                                    <input type="date" x-model="formData.tgl_lahir_ibu"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                             </div>
                             <div class="block"><label
-                                    class="block text-sm font-semibold text-gray-700 mb-2">Pekerjaan</label><select
+                                    class="block text-sm font-semibold text-gray-700 mb-2">Pekerjaan Ibu</label><select
                                     x-model="formData.pekerjaan_ibu_id"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                                     <option value="">Pilih...</option>@foreach($pekerjaan_ibu as $p)<option
                                         value="{{ $p->id }}">{{ $p->nama }}</option>@endforeach
                                 </select></div>
-                            <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">No
-                                    HP</label><input type="text" x-model="formData.no_hp_ibu"
+                                <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">No HP</label>
+                                        <input type="text" x-model="formData.no_hp_ibu"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                             </div>
-                            <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">Pendidikan
-                                    Terakhir</label>
+                            <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">Pendidikan Terakhir Ibu</label>
                                 <select x-model="formData.pendidikan_ibu_id"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                                     <option value="">Pilih...</option>
@@ -427,7 +426,7 @@
                                 </select>
                             </div>
                             <div class="block"><label
-                                    class="block text-sm font-semibold text-gray-700 mb-2">Penghasilan</label>
+                                    class="block text-sm font-semibold text-gray-700 mb-2">Penghasilan Ibu</label>
                                 <select x-model="formData.penghasilan_ibu_id"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                                     <option value="">Pilih...</option>
@@ -436,7 +435,7 @@
                                 </select>
                             </div>
                             <div class="md:col-span-2 block"><label
-                                    class="block text-sm font-semibold text-gray-700 mb-2">Alamat Ibu</label><textarea
+                                    class="block text-sm font-semibold text-gray-700 mb-2">Alamat Ibu <span class="text-red-500">*</span></label><textarea
                                     x-model="formData.alamat_ibu" rows="2"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition"></textarea>
                             </div>
@@ -453,21 +452,20 @@
                                 </label>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-                                <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">Nama
-                                        Wali</label><input type="text" x-model="formData.nama_wali"
+                                <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">Nama Wali <span class="text-red-500">*</span></label>
+                                        <input type="text" x-model="formData.nama_wali"
                                         class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                                 </div>
-                                <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">NIK
-                                        Wali</label><input type="text" x-model="formData.nik_wali"
+                                <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">NIK Wali <span class="text-red-500">*</span></label>
+                                        <input type="text" x-model="formData.nik_wali"
                                         class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                                 </div>
-                                <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">Tgl
-                                        Lahir</label><input type="date" x-model="formData.tgl_lahir_wali"
+                                <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">Tgl Lahir Wali <span class="text-red-500">*</span></label>
+                                <input type="date" x-model="formData.tgl_lahir_wali"
                                         class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                                 </div>
                                 <div class="block">
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Status
-                                        Wali</label>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Status Wali</label>
                                     <select x-model="formData.status_wali"
                                         class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                                         <option value="Hidup">Hidup</option>
@@ -508,6 +506,7 @@
                             </div>
                             <div class="md:col-span-2 block"><label
                                     class="block text-sm font-semibold text-gray-700 mb-2">Alamat Wali</label>
+                                <span class="text-red-500">*</span>
                                 <textarea x-model="formData.alamat_wali" rows="2"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition"></textarea>
                             </div>
@@ -518,37 +517,39 @@
                     <div x-show="step === 4" x-cloak x-transition:enter="transition ease-out duration-300">
                         <div class="border-b border-gray-100 pb-4 mb-8">
                             <h2 class="text-xl font-bold text-gray-900 font-playfair flex items-center gap-2">
-                                <span
-                                    class="bg-green-100 text-green-600 w-8 h-8 rounded-lg flex items-center justify-center text-lg">🏫</span>
-                                Asal Sekolah & Nilai
+                                <span class="bg-green-100 text-green-600 w-8 h-8 rounded-lg flex items-center justify-center text-lg">🏫</span>
+                                Asal Sekolah & Nilai <span class="text-red-500">*</span>
                             </h2>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 mb-10">
                             <div class="block"><label
-                                    class="block text-sm font-semibold text-gray-700 mb-2">Jenjang</label><select
+                                    class="block text-sm font-semibold text-gray-700 mb-2">Jenjang <span class="text-red-500">*</span></label><select
                                     x-model="formData.jenis_sekolah"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
+                                    <option value="">Pilih...</option>
                                     <option value="SMP">SMP</option>
                                     <option value="MTS">MTS</option>
                                 </select></div>
                             <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">Status
-                                    Sekolah</label><select x-model="formData.status_sekolah"
+                                    Sekolah <span class="text-red-500">*</span></label><select x-model="formData.status_sekolah"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
+                                    <option value="">Pilih...</option>
                                     <option value="NEGERI">NEGERI</option>
                                     <option value="SWASTA">SWASTA</option>
                                 </select></div>
                             <div class="block"><label class="block text-sm font-semibold text-gray-700 mb-2">Nama
-                                    Sekolah</label><input type="text" x-model="formData.nama_sekolah"
+                                    Sekolah <span class="text-red-500">*</span></label><input type="text" x-model="formData.nama_sekolah"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                             </div>
                             <div class="block"><label
-                                    class="block text-sm font-semibold text-gray-700 mb-2">NPSN</label><input
+                                    class="block text-sm font-semibold text-gray-700 mb-2">NPSN</label>
+                                    <input
                                     type="text" x-model="formData.npsn_sekolah"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                             </div>
                             <div class="block"><label
-                                    class="block text-sm font-semibold text-gray-700 mb-2">Akreditasi</label><select
+                                    class="block text-sm font-semibold text-gray-700 mb-2">Akreditasi <span class="text-red-500">*</span></label><select
                                     x-model="formData.akreditasi_sekolah"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition">
                                     <option value="">Pilih...</option>
@@ -559,7 +560,7 @@
                                 </select>
                             </div>
                             <div class="md:col-span-2 block"><label
-                                    class="block text-sm font-semibold text-gray-700 mb-2">Alamat Sekolah</label>
+                                    class="block text-sm font-semibold text-gray-700 mb-2">Alamat Sekolah <span class="text-red-500">*</span></label>
                                 <textarea x-model="formData.alamat_sekolah" rows="2"
                                     class="w-full rounded-xl border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 bg-gray-50 focus:bg-white transition"></textarea>
                             </div>
@@ -575,27 +576,27 @@
                                         Semester <span x-text="sem"></span></div>
                                     <div class="grid grid-cols-3 md:grid-cols-5 gap-4">
                                         <div class="block"><label
-                                                class="block text-xs font-semibold text-gray-500 mb-1 text-center">IPA</label><input
+                                                class="block text-xs font-semibold text-gray-500 mb-1 text-center">IPA</label><span class="text-red-500">*</span><input
                                                 type="number" step="0.01" x-model="formData['nilai_' + sem + '_ipa']"
                                                 class="w-full rounded-lg border-gray-300 text-center font-bold focus:border-green-500 focus:ring-green-500"
                                                 placeholder="00.00"></div>
                                         <div class="block"><label
-                                                class="block text-xs font-semibold text-gray-500 mb-1 text-center">IPS</label><input
+                                                class="block text-xs font-semibold text-gray-500 mb-1 text-center">IPS</label><span class="text-red-500">*</span><input
                                                 type="number" step="0.01" x-model="formData['nilai_' + sem + '_ips']"
                                                 class="w-full rounded-lg border-gray-300 text-center font-bold focus:border-green-500 focus:ring-green-500"
                                                 placeholder="00.00"></div>
                                         <div class="block"><label
-                                                class="block text-xs font-semibold text-gray-500 mb-1 text-center">MTK</label><input
+                                                class="block text-xs font-semibold text-gray-500 mb-1 text-center">MTK</label><span class="text-red-500">*</span><input
                                                 type="number" step="0.01" x-model="formData['nilai_' + sem + '_mtk']"
                                                 class="w-full rounded-lg border-gray-300 text-center font-bold focus:border-green-500 focus:ring-green-500"
                                                 placeholder="00.00"></div>
                                         <div class="block"><label
-                                                class="block text-xs font-semibold text-gray-500 mb-1 text-center">BIN</label><input
+                                                class="block text-xs font-semibold text-gray-500 mb-1 text-center">BIN</label><span class="text-red-500">*</span><input
                                                 type="number" step="0.01" x-model="formData['nilai_' + sem + '_bind']"
                                                 class="w-full rounded-lg border-gray-300 text-center font-bold focus:border-green-500 focus:ring-green-500"
                                                 placeholder="00.00"></div>
                                         <div class="block"><label
-                                                class="block text-xs font-semibold text-gray-500 mb-1 text-center">BIG</label><input
+                                                class="block text-xs font-semibold text-gray-500 mb-1 text-center">BIG</label><span class="text-red-500">*</span><input
                                                 type="number" step="0.01" x-model="formData['nilai_' + sem + '_bing']"
                                                 class="w-full rounded-lg border-gray-300 text-center font-bold focus:border-green-500 focus:ring-green-500"
                                                 placeholder="00.00"></div>
@@ -686,19 +687,96 @@
                     nilai_5_ipa: '', nilai_5_ips: '', nilai_5_mtk: '', nilai_5_bind: '', nilai_5_bing: ''
                 },
 
+                validateStep() {
+                    if (this.step === 1) {
+                        if (!this.formData.agreed) {
+                            Swal.fire('Perhatian', 'Anda harus menyetujui syarat dan ketentuan terlebih dahulu.', 'warning');
+                            return false;
+                        }
+                        return true;
+                    }
+                    if (this.step === 2) {
+                        const required = ['nama_lengkap', 'nisn', 'nik', 'no_hp_siswa', 'jk', 'tempat_lahir', 'tgl_lahir', 'agama', 'alamat_siswa'];
+                        const missing = required.filter(field => !this.formData[field] || this.formData[field].toString().trim() === '');
+                        if (missing.length > 0) {
+                            Swal.fire('Perhatian', 'Mohon lengkapi semua field yang wajib diisi (ditandai dengan *).', 'warning');
+                            return false;
+                        }
+                        return true;
+                    }
+                    if (this.step === 3) {
+                        // Validasi berdasarkan tab aktif
+                        if (this.ortuTab === 'ayah') {
+                            const required = ['nama_ayah'];
+                            const missing = required.filter(field => !this.formData[field] || this.formData[field].toString().trim() === '');
+                            if (missing.length > 0) {
+                                Swal.fire('Perhatian', 'Mohon lengkapi data Ayah yang wajib diisi (ditandai dengan *).', 'warning');
+                                return false;
+                            }
+                            // Pindah ke tab Ibu
+                            this.ortuTab = 'ibu';
+                            return false; // Jangan lanjut ke step berikutnya, hanya ganti tab
+                        }
+                        if (this.ortuTab === 'ibu') {
+                            const required = ['nama_ibu'];
+                            const missing = required.filter(field => !this.formData[field] || this.formData[field].toString().trim() === '');
+                            if (missing.length > 0) {
+                                Swal.fire('Perhatian', 'Mohon lengkapi data Ibu yang wajib diisi (ditandai dengan *).', 'warning');
+                                return false;
+                            }
+                            // Setelah Ibu selesai, lanjut ke step berikutnya
+                            return true;
+                        }
+                        return true;
+                    }
+                    if (this.step === 4) {
+                        const required = ['nama_sekolah', 'jenis_sekolah', 'status_sekolah'];
+                        const missing = required.filter(field => !this.formData[field] || this.formData[field].toString().trim() === '');
+                        if (missing.length > 0) {
+                            Swal.fire('Perhatian', 'Mohon lengkapi data Sekolah yang wajib diisi (ditandai dengan *).', 'warning');
+                            return false;
+                        }
+                        return true;
+                    }
+                    return true;
+                },
                 nextStep() {
+                    if (!this.validateStep()) {
+                        return;
+                    }
                     if (this.step < 5) {
                         this.step++;
+                        // Reset tab ke ayah jika masuk ke step 3
+                        if (this.step === 3) {
+                            this.ortuTab = 'ayah';
+                        }
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                     }
                 },
                 prevStep() {
                     if (this.step > 1) {
+                        // Jika kembali dari step 3 dan sedang di tab ibu, kembali ke ayah
+                        if (this.step === 3 && this.ortuTab === 'ibu') {
+                            this.ortuTab = 'ayah';
+                            return;
+                        }
                         this.step--;
+                        // Reset tab ke ayah jika masuk ke step 3
+                        if (this.step === 3) {
+                            this.ortuTab = 'ayah';
+                        }
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                     }
                 },
-                goToStep(i) { if (i < this.step) this.step = i; },
+                goToStep(i) { 
+                    if (i < this.step) {
+                        this.step = i;
+                        // Reset tab ke ayah jika kembali ke step 3
+                        if (i === 3) {
+                            this.ortuTab = 'ayah';
+                        }
+                    }
+                },
 
                 syncWali() {
                     if (this.copyData) {
@@ -725,8 +803,11 @@
                         },
                         body: JSON.stringify(this.formData)
                     })
-                        .then(response => response.json())
-                        .then(data => {
+                        .then(async response => {
+                            const data = await response.json();
+                            return { status: response.status, data: data };
+                        })
+                        .then(({ status, data }) => {
                             this.submitting = false;
                             if (data.success) {
                                 Swal.fire({
@@ -738,7 +819,24 @@
                                     window.location.href = data.redirect || '/siswa/dashboard';
                                 });
                             } else {
-                                Swal.fire('Gagal', data.message || 'Periksa kembali inputan Anda.', 'error');
+                                // Handle status pendaftaran
+                                if (status === 403 && (data.status === 'not_started' || data.status === 'closed')) {
+                                    let icon = 'warning';
+                                    let title = 'Pendaftaran Belum Dibuka';
+                                    if (data.status === 'closed') {
+                                        icon = 'error';
+                                        title = 'Pendaftaran Telah Ditutup';
+                                    }
+                                    Swal.fire({
+                                        title: title,
+                                        text: data.message || 'Periode pendaftaran tidak tersedia saat ini.',
+                                        icon: icon,
+                                        confirmButtonColor: '#16a34a',
+                                        confirmButtonText: 'Mengerti'
+                                    });
+                                } else {
+                                    Swal.fire('Gagal', data.message || 'Periksa kembali inputan Anda.', 'error');
+                                }
                             }
                         })
                         .catch(error => {

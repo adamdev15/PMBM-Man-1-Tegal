@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use App\Models\Casis;
 use App\Models\NilaiRapor;
+use Carbon\Carbon;
 
 class RegistrationController extends Controller
 {
@@ -35,6 +36,29 @@ class RegistrationController extends Controller
 
     public function store(Request $request)
     {
+        // Cek status pendaftaran
+        $settings = \App\Models\Setting::all()->pluck('value', 'key');
+        $tanggalMulai = $settings['jadwal_pendaftaran_mulai'] ? Carbon::parse($settings['jadwal_pendaftaran_mulai']) : null;
+        $tanggalSelesai = $settings['jadwal_pendaftaran_selesai'] ? Carbon::parse($settings['jadwal_pendaftaran_selesai']) : null;
+        $now = Carbon::now();
+        
+        if ($tanggalMulai && $now->lt($tanggalMulai)) {
+            return response()->json([
+                'success' => false,
+                'status' => 'not_started',
+                'message' => 'Pendaftaran belum dibuka. Tanggal pendaftaran dibuka: ' . $tanggalMulai->format('d F Y'),
+                'tanggal_mulai' => $tanggalMulai->toIso8601String()
+            ], 403);
+        }
+        
+        if ($tanggalSelesai && $now->gt($tanggalSelesai)) {
+            return response()->json([
+                'success' => false,
+                'status' => 'closed',
+                'message' => 'Pendaftaran telah ditutup. Periode pendaftaran berakhir pada: ' . $tanggalSelesai->format('d F Y')
+            ], 403);
+        }
+
         $msg = [
             'required' => ':attribute wajib diisi.',
             'unique' => ':attribute sudah terdaftar.'
